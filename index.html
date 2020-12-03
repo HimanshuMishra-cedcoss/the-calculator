@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculator</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style type="text/css">
+    	.calcbody{
+    		height:420px;
+    		width:500px;
+    		border-radius: 25px;
+    		margin:auto;
+    		display:block;
+    		background-color:#262626;
+    	}
+
+    	.btn{
+    		height: 47px;
+    		width: 47px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	var dispval=0;
+    	var preval=0;
+    	var opt='+';
+    	var result;
+    	function calculate(operand)
+    	{
+    		dispval+=operand;
+    		document.getElementById('result').value=dispval;
+    	}
+    	function operation(operator)
+    	{
+   			if (operator=='C')
+   			{
+      			dispval='';
+      			preval='0';
+      			opt='+';
+      			result='';
+      			document.getElementById('result').value='0';
+  			}
+
+    		else{
+    		console.log(preval);
+    		switch(opt)
+    		{
+    			case'+':
+    			result= parseFloat(parseFloat(preval)+parseFloat(dispval));
+    			document.getElementById("result").value=result;
+    			break;
+    			case '-':
+    			result=parseFloat(parseFloat(preval)-parseFloat(dispval));
+    			document.getElementById("result").value=result;
+    			break;
+    			case'*':
+    			result= parseFloat(parseFloat(preval)*parseFloat(dispval));
+    			document.getElementById("result").value=result;
+    			break;
+    			case'/':
+    			result= parseFloat(parseFloat(preval)/parseFloat(dispval));
+    			document.getElementById("result").value=result;
+    			break;
+    			case'M':
+    			result= parseInt(parseInt(preval)%parseInt(dispval));
+    			document.getElementById("result").value=result;
+    			break;
+    			case'=':
+    			result= preval;
+    			document.getElementById("result").value=result;
+    			break;
+    			case'C':
+    			document.getElementById("result").value="0";
+    			break;
+    			case '%':
+    			result=(parseFloat(parseFloat(preval)*parseFloat(dispval))/100);
+    			document.getElementById("result").value=result;
+    			default:
+    			break;
+    		}
+    		dispval="";
+    		preval=result;
+    		opt=operator;
+    	}
+    }
+    </script>
+</head>
+<body style="overflow: hidden;">
+		<div class="container">
+		<div class="container-fluid bg-light">
+		<div class="container-fluid bg-info text-center mt-5 pt-3 pb-3" >
+			<h3>CALCULATOR</h3>
+		</div>	
+		<br>
+		<div class="calcbody px-3 py-3" >
+			<div class="container" >
+				<div class="row" style="border:1px solid black; height: 60px; background-color: white; border-radius: 10px;">
+						<input style="width: 100%;" type="text" name="" id="result" value="0"/>
+				</div>
+			</div>
+			<br>
+			<div class="container" style=" height: 40px;">
+ 
+				<div class="row">
+					<div class="col-3">
+						<button type="button" class="btn btn-danger" onclick="operation('M')">M</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger" onclick="calculate('00')">00</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger" onclick="operation('C')">C</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger" onclick="operation('+')">+</button>
+					</div>
+				</div>
+			</div>
+					<br>
+
+					<div class="container" style=" height: 40px;">
+
+				<div class="row">
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('9')">9</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('8')">8</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('7')">7</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger " onclick="operation('-')">-</button>
+					</div>
+				</div>
+			</div>
+					<br>
+
+					<div class="container" style=" height: 40px;">
+
+				<div class="row">
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('6')">6</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('5')">5</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('4')">4</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger" onclick="operation('/')">/</button>
+					</div>
+				</div>
+			</div>
+			<br>
+
+					<div class="container" style=" height: 40px;">
+
+				<div class="row">
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('3')">3</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('2')">2</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('1')">1</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger" onclick="operation('*')">X</button>
+					</div>
+				</div>
+			</div>
+				<br>
+
+					<div class="container" style=" height: 40px;">
+
+				<div class="row">
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" onclick="calculate('0')">0</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary"onclick="calculate('.')">.</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-danger px-1 "onclick="operation('%')">%</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-success" onclick="operation('=')">=</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+
+</div>
+</div>
+</body>
+</html>
